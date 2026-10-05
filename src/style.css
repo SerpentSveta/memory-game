@@ -108,13 +108,13 @@ button {
   position: relative;
   overflow: hidden;
   min-width: 140px;
-  height: 46px;
-  padding: 5px;
+  height: 63px;
+  padding: 10px;
   border: 2px solid var(--text-primary);
   border-radius: 9px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
+  font-size: 25px;
+  font-family: inherit;
+  color: var(--text-primary);
 }
 
 .header__button::before {
@@ -123,7 +123,7 @@ button {
   top: 0;
   left: 0;
   width: 0;
-  height: 42px;
+  height: 63px;
   border-radius: 5px;
   background: rgb(255 255 255 / 30%);
   transition: all 1s ease;
@@ -131,4 +131,27 @@ button {
 
 .header__button:hover::before {
   width: 100%;
+}
+
+.score__wrapper {
+  margin: 0 auto;
+  max-width: 300px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 140px;
+  height: 46px;
+  padding: 10px;
+  border: 2px solid var(--text-primary);
+  border-radius: 9px;
+  font-size: 25px;
+  color: var(--text-primary);
+  text-align: center;
 }
