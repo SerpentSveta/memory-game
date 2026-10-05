@@ -1,3 +1,5 @@
+import frontCover2 from './assets/images/front-cover-2.jpg';
+
 import './style.css';
 import { createHeader } from './components/header';
 import { createScore } from './components/score';
@@ -13,6 +15,5 @@ app.append(header);
 const score = createScore();
 app.append(score);
 
-const card = createCard('front-cover-2');
+const card = createCard(frontCover2);
 app.append(card);
-card.classList.add('card--flipped');
