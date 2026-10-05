@@ -13,9 +13,8 @@
   --background-modal: #e1d4c9;
   --background-modal-control: #665f55;
 
-  --font-family: "Princess Sofia", sans-serif;
+  --font-family: 'Princess Sofia', sans-serif;
 }
-
 
 html {
   box-sizing: border-box;
@@ -84,4 +83,52 @@ button {
   margin: 0 auto;
   padding: 0 40px;
   position: relative;
+}
+
+.header {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 50px;
+  color: var(--text-primary);
+}
+
+.button__container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__button {
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+  height: 46px;
+  padding: 5px;
+  border: 2px solid var(--text-primary);
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.header__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 42px;
+  border-radius: 5px;
+  background: rgb(255 255 255 / 30%);
+  transition: all 1s ease;
+}
+
+.header__button:hover::before {
+  width: 100%;
 }
