@@ -9,11 +9,9 @@ const app = document.createElement('div');
 app.className = 'app';
 document.body.append(app);
 
-const header = createHeader();
-app.append(header);
-
 const score = createScore();
 app.append(score);
+
 const modal = createModal();
 
 function handleGameComplete(moves, newGame) {
@@ -24,4 +22,8 @@ function handleGameComplete(moves, newGame) {
 }
 
 const { gameBoard, newGame } = createGameBoard(handleGameComplete);
+
+const header = createHeader(newGame);
+
+app.append(header);
 app.append(gameBoard);
