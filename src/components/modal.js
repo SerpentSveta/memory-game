@@ -9,8 +9,12 @@ export function createModal() {
 
   modal.append(modalContent);
 
+  const modalBody = document.createElement('div');
+  modalBody.className = 'modal__body';
+  modalContent.append(modalBody);
+
   const closeButton = document.createElement('button');
-  closeButton.className = 'modal__close';
+  closeButton.className = 'modal__close button';
   closeButton.type = 'button';
   closeButton.textContent = 'Close';
   closeButton.addEventListener('click', closeModal);
@@ -30,6 +34,10 @@ export function createModal() {
     document.removeEventListener('keydown', handleEscape);
   }
 
+  function setContent(content) {
+    modalBody.replaceChildren(content);
+  }
+
   modal.addEventListener('click', (event) => {
     if (event.target === modal) {
       closeModal();
@@ -46,5 +54,6 @@ export function createModal() {
     modal,
     openModal,
     closeModal,
+    setContent,
   };
 }
