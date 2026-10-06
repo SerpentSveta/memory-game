@@ -1,7 +1,7 @@
 import { frontImages } from '../data/images';
 import { createCard } from './card';
 
-export function createGameBoard() {
+export function createGameBoard(onGameComplete) {
   const gameBoard = document.createElement('div');
   gameBoard.className = 'game-board';
 
@@ -29,6 +29,9 @@ export function createGameBoard() {
         valuePairs.textContent = `${pairs}/8`;
         firstCard.classList.add('card--matched');
         secondCard.classList.add('card--matched');
+        if (pairs === 8) {
+          onGameComplete(movies);
+        }
       } else {
         isWaiting = true;
 
