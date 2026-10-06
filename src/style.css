@@ -232,7 +232,6 @@ button {
   background-color: var(--text-primary);
   border-radius: 30px;
   position: relative;
-  animation: modalFadeIn 0.3s ease-out;
 }
 
 .modal__close {
@@ -274,11 +273,24 @@ button {
 }
 
 .leaderboard-modal {
+  padding: 10px;
+  width: 100%;
   color: var(--background-page);
   font-size: 30px;
-  text-align: center;
+}
+.leaderboard-modal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
 }
 
-.leaderboard-table {
-  font-size: 20px;
+.leaderboard-modal th,
+.leaderboard-modal td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--background-page);
+}
+
+.leaderboard-modal th {
+  font-weight: 700;
 }
