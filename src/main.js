@@ -16,6 +16,8 @@ app.append(score);
 const modal = createModal();
 
 function handleGameComplete(moves, newGame) {
+  saveResult(moves);
+
   const victoryContent = createVictoryContent(moves, newGame, modal.closeModal);
 
   modal.setContent(victoryContent);

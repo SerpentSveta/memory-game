@@ -17,8 +17,18 @@ export function saveResult(moves) {
   results.push({
     moves,
     date,
+    timestamp: today.getTime(),
   });
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
+  results.sort((a, b) => {
+    if (a.moves !== b.moves) {
+      return a.moves - b.moves;
+    }
 
+    return a.timestamp - b.timestamp;
+  });
+
+  results.splice(10);
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(results));
 }
