@@ -14,14 +14,14 @@ app.append(header);
 
 const score = createScore();
 app.append(score);
+const modal = createModal();
 
-function handleGameComplete(moves) {
-  const victoryContent = createVictoryContent(moves);
+function handleGameComplete(moves, newGame) {
+  const victoryContent = createVictoryContent(moves, newGame, modal.closeModal);
+
   modal.setContent(victoryContent);
   modal.openModal();
 }
 
-const gameBoard = createGameBoard(handleGameComplete);
+const { gameBoard, newGame } = createGameBoard(handleGameComplete);
 app.append(gameBoard);
-
-const modal = createModal();

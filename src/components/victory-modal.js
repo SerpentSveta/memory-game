@@ -1,4 +1,4 @@
-export function createVictoryContent(moves) {
+export function createVictoryContent(moves, onNewGame, onClose) {
   const victoryModal = document.createElement('div');
   victoryModal.className = 'victory-modal';
 
@@ -17,6 +17,11 @@ export function createVictoryContent(moves) {
   victoryButton.type = 'button';
   victoryButton.textContent = 'New Game';
   victoryModal.append(victoryButton);
+
+  victoryButton.addEventListener('click', () => {
+    onNewGame();
+    onClose();
+  });
 
   return victoryModal;
 }

@@ -9,6 +9,7 @@ export function createGameBoard(onGameComplete) {
   let pairs = 0;
   let movies = 0;
   let isWaiting = false;
+  let timeoutId = null;
   const valueMovies = document.querySelector('.score__value--moves');
   const valuePairs = document.querySelector('.score__value--pairs');
 
@@ -30,12 +31,12 @@ export function createGameBoard(onGameComplete) {
         firstCard.classList.add('card--matched');
         secondCard.classList.add('card--matched');
         if (pairs === 8) {
-          onGameComplete(movies);
+          onGameComplete(movies, newGame);
         }
       } else {
         isWaiting = true;
 
-        setTimeout(() => {
+        timeoutId = setTimeout(() => {
           firstCard.classList.remove('card--flipped');
           secondCard.classList.remove('card--flipped');
 
@@ -47,22 +48,46 @@ export function createGameBoard(onGameComplete) {
     return true;
   }
 
-  const cardsArray = [...frontImages, ...frontImages];
+  function renderCards() {
+    const cardsArray = [...frontImages, ...frontImages];
 
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
-    return array;
+
+    const shuffleCards = shuffle(cardsArray);
+
+    for (const frontImage of shuffleCards) {
+      const newCard = createCard(frontImage, handleCardClick);
+      gameBoard.append(newCard);
+    }
   }
 
-  const shuffleCards = shuffle(cardsArray);
+  function newGame() {
+    clearTimeout(timeoutId);
+    timeoutId = null;
 
-  for (const frontImage of shuffleCards) {
-    const newCard = createCard(frontImage, handleCardClick);
-    gameBoard.append(newCard);
+    selectedCards = [];
+    pairs = 0;
+    movies = 0;
+    isWaiting = false;
+
+    valueMovies.textContent = 0;
+    valuePairs.textContent = '0/8';
+
+    gameBoard.replaceChildren();
+
+    renderCards();
   }
 
-  return gameBoard;
+  renderCards();
+
+  return {
+    gameBoard,
+    newGame,
+  };
 }
