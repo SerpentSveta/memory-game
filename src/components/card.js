@@ -1,8 +1,9 @@
 import backCover from '../assets/images/back-cover.jpg';
 
-export function createCard(frontImage) {
+export function createCard(frontImage, onCardClick) {
   const card = document.createElement('div');
   card.className = 'card';
+  card.dataset.image = frontImage;
 
   const cardInner = document.createElement('div');
   cardInner.className = 'card__inner';
@@ -21,8 +22,15 @@ export function createCard(frontImage) {
   cardInner.append(backImage);
 
   card.addEventListener('click', function () {
-    if (!card.classList.contains('card--flipped')) {
-      card.classList.add('card--flipped');
+    if (
+      !card.classList.contains('card--flipped') &&
+      !card.classList.contains('card--matched')
+    ) {
+      const canOpen = onCardClick(card);
+
+      if (canOpen) {
+        card.classList.add('card--flipped');
+      }
     }
   });
 

@@ -13,7 +13,7 @@ export function createScore() {
 
   const scoreValueMoves = document.createElement('span');
   scoreValueMoves.textContent = '0';
-  scoreValueMoves.classList = 'score__value score__score__value--moves';
+  scoreValueMoves.classList = 'score__value score__value--moves';
   scoreMoves.append(scoreValueMoves);
 
   const scorePairs = document.createElement('div');
