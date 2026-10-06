@@ -12,6 +12,7 @@ export function createLeaderboardContent() {
   }
 
   const leaderboardTable = document.createElement('table');
+  leaderboardTable.className = 'leaderboard-table';
 
   leaderboard.append(leaderboardTable);
 

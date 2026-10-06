@@ -1,4 +1,4 @@
-export function createHeader(onNewGame) {
+export function createHeader(onNewGame, onLeaderboard) {
   const header = document.createElement('header');
   header.className = 'header';
 
@@ -26,6 +26,8 @@ export function createHeader(onNewGame) {
   leaderboard.className = 'header__button header__button--leaderboard';
 
   buttonContainer.append(newGame, leaderboard);
+
+  leaderboard.addEventListener('click', onLeaderboard);
 
   return header;
 }

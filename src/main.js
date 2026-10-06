@@ -5,6 +5,7 @@ import { createGameBoard } from './components/game-board';
 import { createModal } from './components/modal';
 import { createVictoryContent } from './components/victory-modal';
 import { getResults, saveResult } from './utils/leaderboard';
+import { createLeaderboardContent } from './components/leaderboard-modal';
 
 const app = document.createElement('div');
 app.className = 'app';
@@ -24,9 +25,16 @@ function handleGameComplete(moves, newGame) {
   modal.openModal();
 }
 
+function handleLeaderboard() {
+  const leaderboardContent = createLeaderboardContent();
+
+  modal.setContent(leaderboardContent);
+  modal.openModal();
+}
+
 const { gameBoard, newGame } = createGameBoard(handleGameComplete);
 
-const header = createHeader(newGame);
+const header = createHeader(newGame, handleLeaderboard);
 
 app.append(header);
 app.append(gameBoard);
